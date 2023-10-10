@@ -57,7 +57,7 @@ void initialize_data(data_of_program *data, int argc, char *argv[], char **env);
 void sisifo(char *prompt, data_of_program *data);
 void handle_ctrl_c(int opr UNUSED);
 int _getline(data_of_program *data);
-int check_logic_ops(char *array_commands[], int i, char array_operators[]);
+int evaluate_logic_ops(char *arr_cmds[], int i, char arr_ops[]);
 void expand_variables(data_of_program *data);
 void expand_alias(data_of_program *data);
 int buffer_add(char *buffer, char *str_to_add);
