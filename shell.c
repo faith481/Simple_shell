@@ -89,7 +89,7 @@ void initialize_data(data_prog *data, int argc, char *argv[], char **env)
  * @data: its an infinite loop that shows the prompt
  */
 
-void sisifo(char *prompt, data_of_program *data)
+void sisifo(char *prompt, data_prog *data)
 {
 	int error_code = 0, string_len = 0;
 
