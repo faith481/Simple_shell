@@ -48,41 +48,41 @@ typedef struct info
 typedef struct builtins
 {
 	char *builtin;
-	int (*function)(data_of_program *data);
+	int (*function)(data_prog *data);
 } builtins;
 
 /********* MAIN FUNCTIONS **********/
 
-void initialize_data(data_of_program *data, int argc, char *argv[], char **env);
-void sisifo(char *prompt, data_of_program *data);
+void initialize_data(data_prog *data, int argc, char *argv[], char **env);
+void sisifo(char *prompt, data_prog *data);
 void handle_ctrl_c(int opr UNUSED);
-int _getline(data_of_program *data);
+int _getline(data__prog *data);
 int evaluate_logic_ops(char *arr_cmds[], int i, char arr_ops[]);
-void expand_variables(data_of_program *data);
-void expand_alias(data_of_program *data);
+void expand_variables(data_prog *data);
+void expand_alias(data_prog *data);
 int buffer_add(char *buffer, char *str_to_add);
-void tokenize(data_of_program *data);
+void tokenize(data_prog *data);
 char *_strtok(char *line, char *delim);
-int execute(data_of_program *data);
-int builtins_list(data_of_program *data);
-char **tokenize_path(data_of_program *data);
-int find_program(data_of_program *data);
+int execute(data_prog *data);
+int builtins_list(data_of_prog *data);
+char **tokenize_path(data_prog *data);
+int find_program(data_prog *data);
 void free_array_of_pointers(char **directories);
-void free_recurrent_data(data_of_program *data);
-int builtin_exit(data_of_program *data);
-int builtin_cd(data_of_program *data);
-int set_work_directory(data_of_program, char *new_dir);
-int builtin_help(data_of_program *data);
-int builtin_alias(data_of_program *data);
-int builtin_env(data_of_program *data);
-int builtin_unset_env(data_of_program *data);
-char *env_get_key(char *name, data_of_program *data);
-int env_set_key(char *key, char *value, data_of_program *data);
-int env_remove_key(char *key, data_of_program *data);
-void print_environ(data_of_program *data);
+void free_recurrent_data(data_prog *data);
+int builtin_exit(data_prog *data);
+int builtin_cd(data_prog *data);
+int set_work_directory(data_prog, char *new_dir);
+int builtin_help(data_prog *data);
+int builtin_alias(data_prog *data);
+int builtin_env(data_prog *data);
+int builtin_unset_env(data_prog *data);
+char *env_get_key(char *name, data_prog *data);
+int env_set_key(char *key, char *value, data_prog *data);
+int env_remove_key(char *key, data_prog *data);
+void print_environ(data_prog *data);
 int _print(char *string);
 int _printe(char *string);
-int _print_error(int errorcode, data_of_program *data);
+int _print_error(int errorcode, data_prog *data);
 int str_length(char *string);
 char *str_duplicate(char *string);
 int str_compare(char *string1, char *string2, int number);
@@ -91,8 +91,8 @@ void str_reverse(char *string);
 void long_to_string(long number, char *string, int base);
 int _atoi(char *s);
 int count_characters(char *string, char *character);
-int print_alias(data_of_program *data, char *alias);
-char *get_alias(data_of_program *data, char *alias);
-int set_alias(char *alias_string, data_of_program *data);
+int print_alias(data_prog *data, char *alias);
+char *get_alias(data_prog *data, char *alias);
+int set_alias(char *alias_string, data_prog *data);
 
 #endif

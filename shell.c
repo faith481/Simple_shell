@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[], char *env[])
 {
-	data_of_program data_struct = {NULL}, data = &data_struct;
+	data_prog data_struct = {NULL}, data = &data_struct;
 	char *prompt = "$ ";
 
 	initialize_data(data, argc, argv, env);
@@ -45,11 +45,11 @@ void handle_ctrl_c(int opr UNUSED)
  * @argc: number of values received from the command line
  */
 
-void initialize_data(data_of_program *data, int argc, char *argv[], char **env)
+void initialize_data(data_prog *data, int argc, char *argv[], char **env)
 {
 	data->program_name = argv[0];
 	data->input_line = NULL;
-	data->command_name = NULL;
+	data->cmd_name = NULL;
 	data->exec_counter = 0;
 	if (argc == 1)
 		data->file_descriptor = STDIN_FILENO;

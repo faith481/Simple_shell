@@ -6,7 +6,7 @@
  * Return: reading counting bytes
  */
 
-int _getline(data_of_program *data)
+int _getline(data_prog *data)
 {
 	char buf[BUFFER_SIZE] = {'\0'};
 	static char *arr_cmds[10] = {NULL};

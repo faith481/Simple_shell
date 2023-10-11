@@ -6,7 +6,7 @@
  * Return: an array of the different parents of the string
  */
 
-void tokenize(data_of_program *data)
+void tokenize(data_prog *data)
 {
 	char *delim = " \t";
 	int i, j, counter = 2, length;
