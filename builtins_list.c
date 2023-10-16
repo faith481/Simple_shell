@@ -3,7 +3,8 @@
 /**
  * builtins_list - search for a match and execute the associate builtin
  * @data: struct for the prpgram's data
- * Return: the return value of the function executed if there's a match, otherwise -1
+ * Return: the return value of the function executed
+ * if there's a match, otherwise -1
  */
 
 int builtins_list(data_prog *data)
@@ -19,7 +20,7 @@ int builtins_list(data_prog *data)
 		{"unsetenv", builtin_unsetenv},
 		{NULL, NULL}
 	};
-	for (iterator = 0; options[iterator],.builtin != NULL; iterator++)
+	for (iterator = 0; options[iterator], .builtin != NULL; iterator++)
 	{
 		if (str_compare(options[iterator].builtin, data->cmd_name, 0))
 		{

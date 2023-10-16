@@ -27,7 +27,7 @@ int _printe(char *string)
 /**
  * _print_error - writes an array of charactera in the standard error
  * @data: a pointer to the program's data
- * @error_code: error code to print
+ * @errorcode: error code to print
  * Return: number of bytes written
  * on error, -1 is returned and errno is set appropriately
  */

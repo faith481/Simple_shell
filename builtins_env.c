@@ -71,7 +71,7 @@ int builtin_set_env(data_prog *data)
  * Return: On success 0
  */
 
-int buitlin_unset_env(data_prog *data)
+int builtin_unset_env(data_prog *data)
 {
 	if (data->tokens[1] == NULL)
 		return (0);

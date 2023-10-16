@@ -36,7 +36,8 @@ void free_all_data(data_prog *data)
 }
 
 /**
- * free_array_of_pointers - frees each pointer of an array of pointers and the array also
+ * free_array_of_pointers - frees each pointer of an array of
+ * pointers and the array also
  * @array: array of pointer
  */
 

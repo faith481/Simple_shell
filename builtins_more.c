@@ -127,7 +127,7 @@ int builtin_help(data_prog *data)
 	}
 	errno = EINVAL;
 	perror(data->cmd_name);
-	return(0);
+	return (0);
 }
 
 /**
