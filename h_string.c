@@ -20,7 +20,7 @@ int str_length(char *string)
 
 /**
  * str_duplicate - duplicates a string
- * @atring: string to be duplicated
+ * @string: string to be duplicated
  * Return: pointer to the array
  */
 
@@ -127,7 +127,7 @@ char *str_concat(char *string1, char *string2)
 
 void str_reverse(char *string)
 {
-	int i = 0; length = str_length(string) - 1;
+	int i = 0, length = str_length(string) - 1;
 	char hold;
 
 	while (i < length)

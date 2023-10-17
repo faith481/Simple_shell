@@ -12,6 +12,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include "macros.h"
 
 /********** STRUCTURES *************/
 
@@ -33,11 +34,11 @@ typedef struct info
 	char *input_line;
 	char *command_line;
 	int exec_counter;
-	int file_descriptors;
+	int file_descriptor;
 	char **tokens;
 	char **env;
 	char **alias_list;
-} info;
+} data_prog;
 
 /**
  * struct_builtins - struct for the builtins
@@ -56,7 +57,7 @@ typedef struct builtins
 void initialize_data(data_prog *data, int argc, char *argv[], char **env);
 void sisifo(char *prompt, data_prog *data);
 void handle_ctrl_c(int opr UNUSED);
-int _getline(data__prog *data);
+int _getline(data_prog *data);
 int evaluate_logic_ops(char *arr_cmds[], int i, char arr_ops[]);
 void expand_variables(data_prog *data);
 void expand_alias(data_prog *data);
@@ -64,7 +65,7 @@ int buffer_add(char *buffer, char *str_to_add);
 void tokenize(data_prog *data);
 char *_strtok(char *line, char *delim);
 int execute(data_prog *data);
-int builtins_list(data_of_prog *data);
+int builtins_list(data_prog *data);
 char **tokenize_path(data_prog *data);
 int find_program(data_prog *data);
 void free_array_of_pointers(char **directories);
