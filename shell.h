@@ -20,7 +20,7 @@
  * struct info - struct for the programs data
  * @program_name: the name of the executable
  * @input_line: pointer to the input read for _getline
- * @command_name: pointer to the first command typed by the user
+ * @cmd_name: pointer to the first command typed by the user
  * @exec_counter: number of executed commands
  * @file_descriptor: file descriptor to the input of commands
  * @tokens: pointer to array of tokenized input
@@ -32,7 +32,7 @@ typedef struct info
 {
 	char *program_name;
 	char *input_line;
-	char *command_line;
+	char *cmd_name;
 	int exec_counter;
 	int file_descriptor;
 	char **tokens;
@@ -72,7 +72,7 @@ void free_array_of_pointers(char **directories);
 void free_recurrent_data(data_prog *data);
 int builtin_exit(data_prog *data);
 int builtin_cd(data_prog *data);
-int set_work_directory(data_prog, char *new_dir);
+int set_work_directory(data_prog *data, char *new_dir);
 int builtin_help(data_prog *data);
 int builtin_alias(data_prog *data);
 int builtin_env(data_prog *data);
@@ -87,7 +87,7 @@ int _print_error(int errorcode, data_prog *data);
 int str_length(char *string);
 char *str_duplicate(char *string);
 int str_compare(char *string1, char *string2, int number);
-int *str_concat(char *string1, char *string2);
+char *str_concat(char *string1, char *string2);
 void str_reverse(char *string);
 void long_to_string(long number, char *string, int base);
 int _atoi(char *s);

@@ -16,11 +16,11 @@ int builtins_list(data_prog *data)
 		{"cd", builtin_cd},
 		{"alias", builtin_alias},
 		{"env", builtin_env},
-		{"setenv", builtin_setenv},
-		{"unsetenv", builtin_unsetenv},
+		{"setenv", builtin_set_env},
+		{"unsetenv", builtin_unset_env},
 		{NULL, NULL}
 	};
-	for (iterator = 0; options[iterator], .builtin != NULL; iterator++)
+	for (iterator = 0; options[iterator].builtin != NULL; iterator++)
 	{
 		if (str_compare(options[iterator].builtin, data->cmd_name, 0))
 		{

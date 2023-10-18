@@ -32,7 +32,7 @@ int builtin_exit(data_prog *data)
 
 int builtin_cd(data_prog *data)
 {
-	char *dir_hom = env_get_key("HOME", data), *dir_old = NULL;
+	char *dir_home = env_get_key("HOME", data), *dir_old = NULL;
 	char old_dir[128] = {0};
 	int error_code = 0;
 
@@ -76,8 +76,8 @@ int set_work_directory(data_prog *data, char *new_dir)
 	getcwd(old_dir, 128);
 	if (!str_compare(old_dir, new_dir, 0))
 	{
-		err_code = chdir(new_dir);
-		if (err_code == -1)
+		error_code = chdir(new_dir);
+		if (error_code == -1)
 		{
 			errno = 2;
 			return (3);
@@ -100,6 +100,8 @@ int builtin_help(data_prog *data)
 	char *messages[6] = {NULL};
 
 	messages[0] = HELP_MSG;
+	/* validate the arg */
+
 	if (data->tokens[1] == NULL)
 	{
 		_print(messages[0] + 6);
@@ -144,7 +146,7 @@ int builtin_alias(data_prog *data)
 		return (print_alias(data, NULL));
 	while (data->tokens[++i])
 	{
-		if (count_chars(data->tokens[i], "="))
+		if (count_characters(data->tokens[i], "="))
 			set_alias(data->tokens[i], data);
 		else
 			print_alias(data, data->tokens[i]);

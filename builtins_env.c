@@ -12,7 +12,7 @@ int builtin_env(data_prog *data)
 	char cpname[50] = {'\0'};
 	char *var_cp = NULL;
 
-	if (data->tokens[i] == NULL)
+	if (data->tokens[1] == NULL)
 		print_environ(data);
 	else
 	{

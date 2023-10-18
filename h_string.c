@@ -97,7 +97,7 @@ char *str_concat(char *string1, char *string2)
 	int length1 = 0, length2 = 0;
 
 	if (string1 == NULL)
-		string = "";
+		string1 = "";
 	length1 = str_length(string1);
 	if (string2 == NULL)
 		string2 = "";

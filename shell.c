@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[], char *env[])
 {
-	data_prog data_struct = {NULL}, data = &data_struct;
+	data_prog data_struct = {NULL}, *data = &data_struct;
 	char *prompt = "$ ";
 
 	initialize_data(data, argc, argv, env);
@@ -47,6 +47,8 @@ void handle_ctrl_c(int opr UNUSED)
 
 void initialize_data(data_prog *data, int argc, char *argv[], char **env)
 {
+	int i = 0;
+
 	data->program_name = argv[0];
 	data->input_line = NULL;
 	data->cmd_name = NULL;
@@ -69,7 +71,7 @@ void initialize_data(data_prog *data, int argc, char *argv[], char **env)
 	data->env = malloc(sizeof(char *) * 50);
 	if (env)
 	{
-		for (; env[1]; i++)
+		for (; env[i]; i++)
 		{
 			data->env[1] = str_duplicate(env[i]);
 		}

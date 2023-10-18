@@ -14,7 +14,7 @@ int execute(data_prog *data)
 	result = builtins_list(data);
 	if (result != -1)
 		return (result);
-	result = find_prog(data);
+	result = find_program(data);
 	if (result)
 	{
 		return (result);
