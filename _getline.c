@@ -24,6 +24,7 @@ int _getline(data_prog *data)
 		bytes_read = read(data->file_descriptor, &buf, BUFFER_SIZE - 1);
 	if (bytes_read == 0)
 		return (-1);
+	i = 0;
 	do {
 		arr_cmds[i] = str_duplicate(_strtok(i ? NULL : buf, "\n;"));
 		i = evaluate_logic_ops(arr_cmds, i, arr_ops);

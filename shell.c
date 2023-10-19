@@ -11,7 +11,7 @@
 int main(int argc, char *argv[], char *env[])
 {
 	data_prog data_struct = {NULL}, *data = &data_struct;
-	char *prompt = "$ ";
+	char *prompt = "";
 
 	initialize_data(data, argc, argv, env);
 	signal(SIGINT, handle_ctrl_c);
