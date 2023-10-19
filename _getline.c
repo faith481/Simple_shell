@@ -27,7 +27,7 @@ int _getline(data_prog *data)
 	i = 0;
 	do {
 		arr_cmds[i] = str_duplicate(_strtok(i ? NULL : buf, "\n;"));
-		i = evaluate_logic_ops(arr_cmds, i, arr_ops);
+		i = check_logic_ops(arr_cmds, i, arr_ops);
 	} while (arr_cmds[i++]);
 	}
 	data->input_line = arr_cmds[0];
@@ -41,14 +41,14 @@ int _getline(data_prog *data)
 
 
 /**
- * evaluate_logic_ops - evaluate and split for && and || operators
+ * check_logic_ops - check and split for && and || operators
  * @arr_cmds: array of the commands
  * @arr_ops: array of the logical operators for each previous commands
  * @i: index in the arr_cmds to be checked
  * Return: index of the last command in the arr_cmds
  */
 
-int evaluate_logic_ops(char *arr_cmds[], int i, char arr_ops[])
+int check_logic_ops(char *arr_cmds[], int i, char arr_ops[])
 {
 	char *temp = NULL;
 	int j;
@@ -62,10 +62,21 @@ int evaluate_logic_ops(char *arr_cmds[], int i, char arr_ops[])
 			arr_cmds[i] = str_duplicate(arr_cmds[i]);
 			arr_cmds[i + 1] = str_duplicate(temp + j + 2);
 			i++;
-			arr_ops[i] = '1';
+			arr_ops[i] = '|';
 			free(temp);
 			j = 0;
 		}
+	if (arr_cmds[i][j] == '|' && arr_cmds[i][j + 1] == '|')
+	{
+		temp = arr_cmds[i];
+		arr_cmds[i][j] = '\0';
+		arr_cmds[i] = str_duplicate(arr_cmds[i]);
+		arr_cmds[i + 1] = str_duplicate(temp + j + 2);
+		i++;
+		arr_ops[i] = '|';
+		free(temp);
+		j = 0;
 	}
-	return (i);
+	}
+	return (1);
 }

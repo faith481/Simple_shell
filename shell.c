@@ -73,7 +73,7 @@ void initialize_data(data_prog *data, int argc, char *argv[], char **env)
 	{
 		for (; env[i]; i++)
 		{
-			data->env[1] = str_duplicate(env[i]);
+			data->env[i] = str_duplicate(env[i]);
 		}
 	}
 	data->env[i] = NULL;
