@@ -70,6 +70,7 @@ char **tokenize_path(data_prog *data);
 int find_program(data_prog *data);
 void free_array_of_pointers(char **directories);
 void free_recurrent_data(data_prog *data);
+void free_all_data(data_prog *data);
 int builtin_exit(data_prog *data);
 int builtin_cd(data_prog *data);
 int set_work_directory(data_prog *data, char *new_dir);

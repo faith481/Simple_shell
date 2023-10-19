@@ -79,7 +79,7 @@ void initialize_data(data_prog *data, int argc, char *argv[], char **env)
 	data->env[i] = NULL;
 	env = data->env;
 	data->alias_list = malloc(sizeof(char *) * 20);
-	for (int i = 0; i < 20; i++)
+	for (i = 0; i < 20; i++)
 	{
 		data->alias_list[i] = NULL;
 	}

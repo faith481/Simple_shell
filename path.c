@@ -57,7 +57,7 @@ char **tokenize_path(data_prog *data)
 	int i = 0;
 	int count_dir = 2;
 	char **tokens = NULL;
-	char **PATH;
+	char *PATH;
 
 	PATH = env_get_key("PATH", data);
 	if ((PATH == NULL) || PATH[0] == '\0')

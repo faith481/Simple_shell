@@ -10,11 +10,11 @@ int _getline(data_prog *data)
 {
 	char buf[BUFFER_SIZE] = {'\0'};
 	static char *arr_cmds[10] = {NULL};
-	static char *arr_ops[10] = {'\0'};
+	static char arr_ops[10] = {'\0'};
 	ssize_t bytes_read, i = 0;
 
 	if (!arr_cmds[0] || (arr_ops[0] == '&' && errno != 0)
-			|| arr_ops[0] == '1' && errno == 0)
+			|| (arr_ops[0] == '|' && errno == 0))
 	{
 		for (i = 0; arr_cmds[i]; i++)
 		{

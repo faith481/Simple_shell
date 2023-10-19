@@ -13,7 +13,8 @@ int builtin_exit(data_prog *data)
 	if (data->tokens[1] != NULL)
 	{
 		for (i = 0; data->tokens[1][i]; i++)
-			if ((data->tokens[1][i] > '9') && data->tokens[1][i] != '+')
+			if ((data->tokens[1][i] < '0' || data->tokens[1][i] > '9')
+					&& data->tokens[1][i] != '+')
 			{
 				errno = 2;
 				return (2);
@@ -99,7 +100,7 @@ int builtin_help(data_prog *data)
 	int i, length = 0;
 	char *messages[6] = {NULL};
 
-	messages[0] = HELP_MSG;
+	messages[0] = "HELP_MSG";
 	/* validate the arg */
 
 	if (data->tokens[1] == NULL)
@@ -113,11 +114,11 @@ int builtin_help(data_prog *data)
 		perror(data->cmd_name);
 		return (5);
 	}
-	messages[1] = HELP_EXIT_MSG;
-	messages[2] = HELP_ENV_MSG;
-	messages[3] = HELP_SETENV_MSG;
-	messages[4] = HELP_UNSETENV_MSG;
-	messages[5] = HELP_CD_MSG;
+	messages[1] = "HELP_EXIT_MSG";
+	messages[2] = "HELP_ENV_MSG";
+	messages[3] = "HELP_SETENV_MSG";
+	messages[4] = "HELP_UNSETENV_MSG";
+	messages[5] = "HELP_CD_MSG";
 	for (i = 0; messages[i]; i++)
 	{
 		length = str_length(data->tokens[1]);

@@ -16,7 +16,7 @@ int builtins_list(data_prog *data)
 		{"cd", builtin_cd},
 		{"alias", builtin_alias},
 		{"env", builtin_env},
-		{"setenv", builtin_set_env},
+		{"setenv", builtin_unset_env},
 		{"unsetenv", builtin_unset_env},
 		{NULL, NULL}
 	};
