@@ -64,7 +64,7 @@ void initialize_data(data_prog *data, int argc, char *argv[], char **env)
 			_print(": 0: Can't open");
 			_print(argv[1]);
 			_print("\n");
-			exit(126);
+			exit(127);
 		}
 	}
 	data->tokens = NULL;
