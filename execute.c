@@ -1,46 +1,36 @@
 #include "shell.h"
 
 /**
- * execute - executes a command with its entire path variables
- * @data: a pointer to the program's data
- * Return: on Success 0, otherwise -1
+ * program_exec - prints function that execute a commands
+ * @order: The command
+ * @cas: argument array
+ * @prog: pointer to the shell
+ * Return: void
  */
-
-int execute(data_prog *data)
+void program_exec(const char *order, char *const cas[], char *prog)
 {
-	int result = 0, status;
-	pid_t child_pid;
+	pid_t pt_pid = fork();
 
-	result = builtins_list(data);
-	if (result != -1)
-		return (result);
-	result = find_program(data);
-	if (result)
+	if (pt_pid == -1)
 	{
-		return (result);
+		perror("Fork has failed");
+		return;
+	}
+
+	if (pt_pid == 0)
+	{
+		execvp(order, cas);
+		perror(prog);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		child_pid = fork();
-		if (child_pid == -1)
-		{
-			perror(data->cmd_name);
-			exit(EXIT_FAILURE);
-		}
-		if (child_pid == 0)
-		{
-			result = execve(data->tokens[0], data->tokens, data->env);
-			if (result == -1)
-				perror(data->cmd_name), exit(EXIT_FAILURE);
-		}
-		else
-		{
-			wait(&status);
-			if (WIFEXITED(status))
-				errno = WEXITSTATUS(status);
-			else if (WIFSIGNALED(status))
-				errno = 128 + WTERMSIG(status);
-		}
+		int status;
+		pid_t child_pid;
+
+		do {
+			child_pid = wait(&status);
+		} while (child_pid != pt_pid);
 	}
-	return (0);
 }
+
