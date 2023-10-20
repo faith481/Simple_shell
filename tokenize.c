@@ -1,41 +1,53 @@
 #include "shell.h"
 
+
 /**
- * tokenize - seperates the string using a designed delimeter
- * @data: a pointer to the program's data
- * Return: an array of the different parents of the string
+ * strtak - print function that tokenize the strings
+ * @xter: The strings
+ * @prog: pointer to the shell
+ *
+ * Return: void
  */
-
-void tokenize(data_prog *data)
+void strtak(const char *xter, char *prog)
 {
-	char *delim = " \t";
-	int i, j, counter = 2, length;
+	const char *delimi = " \n";
+	char *tak = strdup(xter), *next_orde = NULL;
+	int w, count = 0;
+	char *next_tak[10];
 
-	length = str_length(data->input_line);
-	if (length)
+	if (tak == NULL)
 	{
-		if (data->input_line[length - 1] == '\n')
-			data->input_line[length - 1] = '\0';
+		perror("Failed to allocate memory");
+		return;
 	}
-	for (i = 0; data->input_line[i]; i++)
+	next_orde = strtok(tak, delimi);
+
+	while (count < 10 && next_orde != NULL)
 	{
-		for (j = 0; delim[j]; j++)
+		next_tak[count] = strdup(next_orde);
+		count++;
+		next_orde = strtok(NULL, delimi);
+	}
+	if (count > 0)
+	{
+		next_tak[count] = NULL;
+		function_exec(next_tak[0], next_tak, prog);
+
+		for (w = 0; w < count; w++)
 		{
-			if (data->input_line[i] == delim[j])
-				counter++;
+			free(next_tak[w]);
 		}
 	}
-	data->tokens = malloc(counter * sizeof(char *));
-	if (data->tokens == NULL)
-	{
-		perror(data->program_name);
-		exit(errno);
-	}
-	/*i = 0;*/
-	data->tokens[i] = str_duplicate(_strtok(data->input_line, delim));
-	data->cmd_name = str_duplicate(data->tokens[0]);
-	while (data->tokens[i++])
-	{
-		data->tokens[i] = str_duplicate(_strtok(NULL, delim));
-	}
+	free(tak);
+}
+
+
+/**
+ * prom - print the function that display prompt
+ * @xter: prompt
+ * Return: void
+ */
+void prom(const char *xter)
+{
+	write(STDOUT_FILENO, xter, strlen(xter));
 }
